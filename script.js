@@ -19,8 +19,7 @@ createBtn.addEventListener('click', ()=>{
     inputBox.className='input-box';
     inputBox.setAttribute('contenteditable', 'true');
     img.src = './notes-app-img/images/delete.png';
-    notesContainer.appendChild(inputBox)
-    inputBox.appendChild(img);
+    notesContainer.appendChild(inputBox).appendChild(img);
     inputBox.addEventListener('keyup', function () {
         updateStorage();
     });
@@ -45,10 +44,7 @@ notesContainer.addEventListener('click', function (e){
 
 document.addEventListener('keydown', event =>{
     if(event.key === 'Enter'){
-        let range = window.getSelection().getRangeAt(0);
-        let br = document.createElement('br');
-        range.insertNode(br);
-        range.setStartAfter(br);
+       document.execCommand('insertLineBreak');
         event.preventDefault();
     }
 })
